@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u! PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 26
+  companyName: Demo
+  productName: Phone Repair Simulator
+  defaultScreenOrientation: 1
+  bundleVersion: 1.0.0
+  AndroidBundleVersionCode: 1
+  AndroidMinSdkVersion: 23
+  AndroidTargetSdkVersion:  AndroidApiLevelAuto
+  applicationIdentifier:
+    Android: com.demo.phonerepairsimulator
+  scriptingBackend:
+    Android: 1
+  apiCompatibilityLevel: 6
