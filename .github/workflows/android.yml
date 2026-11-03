@@ -21,7 +21,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ./
+          projectPath: .
           targetPlatform: Android
           buildName: PhoneRepair
           buildsPath: build
