@@ -1,0 +1,45 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Unity Android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Check project structure
+        run: |
+          echo "Checking Unity project..."
+          ls -la
+          test -f "Assets" || test -d "Assets"
+          test -f "Packages/manifest.json"
+          test -f "ProjectSettings/ProjectVersion.txt"
+          echo "Unity project files found!"
+
+      - name: Build Android APK
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: .
+          targetPlatform: Android
+          androidExportType: androidPackage
+          buildName: PhoneRepair
+          buildsPath: build
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: PhoneRepair-APK
+          path: build/**/*.apk
+          if-no-files-found: error
